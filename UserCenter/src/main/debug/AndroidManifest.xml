@@ -3,6 +3,7 @@
           xmlns:tools="http://schemas.android.com/tools"
           package="io.github.tobiahshaw.user">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
             android:label="@string/app_name"
             android:theme="@style/AppTheme"

@@ -8,10 +8,10 @@ import io.github.tobiahshaw.user.service.impl.UserServiceImpl
 
 class RegisterPresenter : BasePresenter<RegisterView>() {
 
-    fun register(mobile: String, verifyCode: String, pwd: String) {
+    fun register(mobile: String, pwd: String, verifyCode: String) {
         // bloc
         val userService = UserServiceImpl()
-        userService.register(mobile, verifyCode, pwd)
+        userService.register(mobile, pwd, verifyCode)
             .execute(object : BaseObserver<Boolean>(){
                 override fun onNext(t: Boolean) {
                     mView.onRegisterResult(t)
