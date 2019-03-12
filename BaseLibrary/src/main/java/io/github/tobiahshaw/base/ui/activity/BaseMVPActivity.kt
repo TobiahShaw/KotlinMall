@@ -2,9 +2,11 @@ package io.github.tobiahshaw.base.ui.activity
 
 import io.github.tobiahshaw.base.presenter.BasePresenter
 import io.github.tobiahshaw.base.presenter.view.BaseView
+import javax.inject.Inject
 
 open class BaseMVPActivity<T : BasePresenter<*>> : BaseActivity(), BaseView {
 
+    @Inject
     lateinit var mPresenter: T
 
     override fun showLoading() {

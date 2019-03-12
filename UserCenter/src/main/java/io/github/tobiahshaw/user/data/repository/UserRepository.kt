@@ -5,8 +5,9 @@ import io.github.tobiahshaw.base.data.protocol.BaseResp
 import io.github.tobiahshaw.user.data.api.UserAPI
 import io.github.tobiahshaw.user.data.protocol.RegisterReq
 import io.reactivex.Observable
+import javax.inject.Inject
 
-class UserRepository {
+class UserRepository @Inject constructor(){
     fun register(mobile: String, pwd: String, verifyCode: String): Observable<BaseResp<String>> {
         return RetrofitFactory.instance.create(UserAPI::class.java).register(RegisterReq(mobile, pwd, verifyCode))
     }
