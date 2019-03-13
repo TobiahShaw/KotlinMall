@@ -1,6 +1,5 @@
 package io.github.tobiahshaw.base.ui.activity
 
-import android.support.v7.app.AppCompatActivity
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
 
-open class BaseActivity : AppCompatActivity() {
-}
+open class BaseActivity : RxAppCompatActivity()
