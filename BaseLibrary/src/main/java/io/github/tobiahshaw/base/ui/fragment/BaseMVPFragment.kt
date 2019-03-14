@@ -1,4 +1,4 @@
-package io.github.tobiahshaw.base.ui.activity
+package io.github.tobiahshaw.base.ui.fragment
 
 import android.os.Bundle
 import io.github.tobiahshaw.base.common.BaseApplication
@@ -10,7 +10,7 @@ import io.github.tobiahshaw.base.presenter.BasePresenter
 import io.github.tobiahshaw.base.presenter.view.BaseView
 import javax.inject.Inject
 
-abstract class BaseMVPActivity<T : BasePresenter<*>> : BaseActivity(), BaseView {
+abstract class BaseMVPFragment<T : BasePresenter<*>> : BaseFragment(), BaseView {
 
     @Inject
     lateinit var mPresenter: T
@@ -28,8 +28,8 @@ abstract class BaseMVPActivity<T : BasePresenter<*>> : BaseActivity(), BaseView 
     abstract fun injectComponent()
 
     private fun initActivityInjection() {
-        activityComponent = DaggerActivityComponent.builder().appComponent((application as BaseApplication).appComponent)
-            .activityModule(ActivityModule(this)).lifecycleProviderModule(LifecycleProviderModule(this)).build()
+        activityComponent = DaggerActivityComponent.builder().appComponent((activity.application as BaseApplication).appComponent)
+            .activityModule(ActivityModule(activity)).lifecycleProviderModule(LifecycleProviderModule(this)).build()
     }
 
     override fun showLoading() {
