@@ -1,2 +1,6 @@
 <manifest
-        package="io.github.tobiahshaw.base"/>
+        package="io.github.tobiahshaw.base"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
+</manifest>
