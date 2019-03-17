@@ -8,6 +8,8 @@ import io.github.tobiahshaw.base.injection.module.ActivityModule
 import io.github.tobiahshaw.base.injection.module.LifecycleProviderModule
 import io.github.tobiahshaw.base.presenter.BasePresenter
 import io.github.tobiahshaw.base.presenter.view.BaseView
+import io.github.tobiahshaw.base.widgets.ProgressLoading
+import org.jetbrains.anko.toast
 import javax.inject.Inject
 
 abstract class BaseMVPActivity<T : BasePresenter<*>> : BaseActivity(), BaseView {
@@ -17,12 +19,16 @@ abstract class BaseMVPActivity<T : BasePresenter<*>> : BaseActivity(), BaseView 
 
     lateinit var activityComponent: ActivityComponent
 
+    lateinit var mLoadingDialog: ProgressLoading
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         initActivityInjection()
 
         injectComponent()
+
+        mLoadingDialog = ProgressLoading.create(this)
     }
 
     abstract fun injectComponent()
@@ -33,14 +39,18 @@ abstract class BaseMVPActivity<T : BasePresenter<*>> : BaseActivity(), BaseView 
     }
 
     override fun showLoading() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        mLoadingDialog.show()
     }
 
     override fun hideLoading() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        mLoadingDialog.dismiss()
     }
 
     override fun onError() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun showToast(msg: String) {
+        toast(msg)
     }
 }
