@@ -16,7 +16,6 @@ class RegisterPresenter @Inject constructor(): BasePresenter<RegisterView>() {
         // bloc
 
         if (!checkNetWork()) {
-            mView.showToast("网络不可用！")
             return
         }
 

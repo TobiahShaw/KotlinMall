@@ -16,6 +16,8 @@ open class BasePresenter<T : BaseView> {
     lateinit var context: Context
 
     fun checkNetWork() : Boolean {
+        val available = NetWorkUtils.isNetWorkAvailable(context)
+        if (!available) mView.showToast("网络不可用！")
         return NetWorkUtils.isNetWorkAvailable(context)
     }
 }
